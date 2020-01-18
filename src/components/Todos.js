@@ -22,7 +22,9 @@ const Todos = () => {
   const handleNewTodo = e => {
     e.preventDefault();
     const item = todoRef.current;
-    addTodo(item.value);
+    if (item.value) {
+      addTodo(item.value);
+    }
     item.value = '';
   };
   return (
@@ -66,7 +68,7 @@ const Todos = () => {
             <ul data-testid="todos">
               {todos.map(todo => {
                 return (
-                  <li key={todo.id}>
+                  <li key={todo.id} className="mt-2">
                     <div>
                       <span>{todo.item}</span>
                       <button
